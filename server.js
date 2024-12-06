@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { registerUser, loginUser } = require("./controllers/auth");
-const { addTrain } = require("./controllers/train");
+const { addTrain, getTrains } = require("./controllers/train");
 const sequelize = require("./config/db");
 const apiKeyMiddleware = require("./middleware/apiKey.middleware");
 
@@ -23,6 +23,7 @@ sequelize
 app.post("/register", registerUser);
 app.post("/login", loginUser);
 app.post("/admin/addtrain", apiKeyMiddleware, addTrain);
+app.post("/admin/gettrain", apiKeyMiddleware, getTrains);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
