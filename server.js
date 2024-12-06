@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./db");
+const db = require("./config/db");
+const { registerUser } = require("./controllers/auth");
+const sequelize = require("./config/db");
 
 require("dotenv").config();
 const app = express();
@@ -8,16 +10,14 @@ app.use(cors());
 
 app.use(express.json());
 const PORT = process.env.PORT || 3010;
+sequelize
+  .sync({ force: true }) // Set to `true` only for development
+  .then(() => console.log("Database synced"))
+  .catch((err) => console.error("Database sync failed:", err));
+
+// routes
+app.post("/register", registerUser);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-});
-
-db.query("SELECT NOW()", (err, res) => {
-  if (err) {
-    console.error("Error connecting to PostgreSQL:", err);
-    process.exit(1);
-  } else {
-    console.log("PostgreSQL connected successfully at:", res.rows[0].now);
-  }
 });
