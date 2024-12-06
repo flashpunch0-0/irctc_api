@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { registerUser, loginUser } = require("./controllers/auth");
 const { addTrain, getTrains, updateSeats } = require("./controllers/train");
-const { bookTicket } = require("./controllers/booking");
+const { bookTicket, getTicketDetail } = require("./controllers/booking");
 const sequelize = require("./config/db");
 const apiKeyMiddleware = require("./middleware/apiKey.middleware");
 
@@ -28,6 +28,7 @@ app.post("/admin/addtrain", apiKeyMiddleware, addTrain);
 app.post("/admin/gettrain", apiKeyMiddleware, getTrains);
 app.post("/admin/updateseats", apiKeyMiddleware, updateSeats);
 app.post("/bookticket", bookTicket);
+app.post("/getticket", getTicketDetail);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
