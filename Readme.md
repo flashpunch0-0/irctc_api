@@ -1,32 +1,33 @@
 # IRCTC-ROLE-BASED-TICKET-BOOKING-API
 
-This is nodejs/express api which implements irctc type ticket bokking system. It provides a role based access control to its users.
-web server - NoedJS/ ExpressJS <br>
-Database - PostgreSQL
-ORM - Sequqlize
+This is nodejs/express api which implements irctc type ticket booking system. It provides a role based access control to its users.
+
+- web server - NodeJS/ ExpressJS <br>
+- Database - PostgreSQL<br>
+- ORM - Sequelize<br>
 
 ## DATABASE SCHEMAS
 
 Tables
 -User, Train, Booking
 
-User
--username : String
--email: String
--password: String
-role: Enum("admin", "user")
+-User<br>
+-username : String<br>
+-email: String<br>
+-password: String<br>
+role: Enum("admin", "user")<br>
 
-Train
--train_num: String
--src : String
--dest : String
--avl_seats: int
+-Train
+-train_num: String<br>
+-src : String<br>
+-dest : String<br>
+-avl_seats: int<br>
 
-Booking
--booking_id: int
--username:String
--train_num :String
--booking_time: String
+-Booking
+-booking_id: int<br>
+-username:String<br>
+-train_num :String<br>
+-booking_time: String<br>
 
 ## API ROUTES
 
@@ -60,13 +61,17 @@ Booking
 ### BOOKING
 
 - `POST /bookticket` - Books ticket only using the train_num. Verifies the username and assigns the ticket to user
+
   - Request { train_num, availableSeats }, token
   - Response {message}
 
-` `POST /getticket` - Get ticket details - Request { booking_id }(int), token - Response {booking}
+- `POST /getticket` - Get ticket details
+
+  - Request { booking_id }(int), token
+  - Response {booking}
 
 ## INSTALLATION AND RUNNING
 
--clone the repository
--Run `npm install`
--Run `nodemon server.js` or `node server.js`
+-clone the repository<br>
+-Run `npm install`<br>
+-Run `nodemon server.js` or `node server.js`<br>
