@@ -26,7 +26,7 @@ app.post("/register", registerUser);
 app.post("/login", loginUser);
 app.post("/admin/addtrain", apiKeyMiddleware, addTrain);
 app.post("/admin/gettrain", apiKeyMiddleware, getTrains);
-app.post("/admin/updateseats", apiKeyMiddleware, updateSeats);
+app.put("/admin/updateseats", apiKeyMiddleware, updateSeats);
 app.post("/bookticket", bookTicket);
 app.post("/getticket", getTicketDetail);
 
