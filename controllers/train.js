@@ -16,6 +16,7 @@ const addTrain = async (req, res) => {
   // verify token
   if (!decrypted) return res.status(401).json({ message: "Invalid Token" });
 
+  //  create a train data
   const train = await Train.create({
     train_num: train_num,
     src: source,
@@ -42,6 +43,7 @@ const getTrains = async (req, res) => {
       .json({ message: "No token provided; access denied" });
   const decrypted = jwt.verify(token, process.env.JWT_SECRET_KEY);
   if (!decrypted) return res.status(401).json({ message: "Invalid Token" });
+  // findall
   const trains = await Train.findAll({
     where: {
       src: source,
@@ -69,6 +71,7 @@ const updateSeats = async (req, res) => {
       .status(401)
       .json({ message: `Train with number ${train_num} not found` });
   }
+  //  update the seats
   train.avl_seats = availableSeats;
   train.save();
   res.status(200).json({ message: "Seats updates successfully" });
