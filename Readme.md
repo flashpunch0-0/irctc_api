@@ -75,7 +75,7 @@ Tables<br>
 -clone the repository<br>
 -Run `npm install`<br>
 -Run `nodemon server.js` or `node server.js`<br>
--JWT_SECRET_KEY and ADMIN_API_KEY is stored .env file.
+-JWT_SECRET_KEY and ADMIN_API_KEY is stored .env file.<br>
 -to generate a 32 bit key use `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` in cmd 
 
 ### .env file sample
