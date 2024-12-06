@@ -8,26 +8,26 @@ This is nodejs/express api which implements irctc type ticket booking system. It
 
 ## DATABASE SCHEMAS
 
-Tables
+Tables<br>
 -User, Train, Booking
 
--User<br>
--username : String<br>
--email: String<br>
--password: String<br>
-role: Enum("admin", "user")<br>
+- User<br>
+  -username : String<br>
+  -email: String<br>
+  -password: String<br>
+  -role: Enum("admin", "user")<br>
 
--Train
--train_num: String<br>
--src : String<br>
--dest : String<br>
--avl_seats: int<br>
+- Train
+  -train_num: String<br>
+  -src : String<br>
+  -dest : String<br>
+  -avl_seats: int<br>
 
--Booking
--booking_id: int<br>
--username:String<br>
--train_num :String<br>
--booking_time: String<br>
+- Booking
+  -booking_id: int<br>
+  -username:String<br>
+  -train_num :String<br>
+  -booking_time: String<br>
 
 ## API ROUTES
 
