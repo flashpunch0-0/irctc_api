@@ -7,7 +7,7 @@ const User = require("../models/user");
 const generateToken = (user) => {
   const payload = {
     id: user._id,
-    username: user.name,
+    username: user.username,
     email: user.email,
     role: user.role,
   };
