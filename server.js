@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const { registerUser, loginUser } = require("./controllers/auth");
+const { addTrain, getTrains } = require("./controllers/train");
 const sequelize = require("./config/db");
+const apiKeyMiddleware = require("./middleware/apiKey.middleware");
 
 require("dotenv").config();
 const app = express();
@@ -20,6 +22,8 @@ sequelize
 // routes
 app.post("/register", registerUser);
 app.post("/login", loginUser);
+app.post("/admin/addtrain", apiKeyMiddleware, addTrain);
+app.post("/admin/gettrain", apiKeyMiddleware, getTrains);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
