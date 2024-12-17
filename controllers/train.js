@@ -53,6 +53,9 @@ const getTrains = async (req, res) => {
       },
     },
   });
+  if (trains.length < 1) {
+    return res.status(400).json({ message: "No trains available" });
+  }
   res.status(200).json({ message: trains });
 };
 

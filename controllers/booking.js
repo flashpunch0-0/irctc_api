@@ -121,8 +121,9 @@ const getTicketDetail = async (req, res) => {
   // verify token
   if (!decrypted) return res.status(401).json({ message: "Invalid Token" });
   const ticket = await Booking.findOne({ where: { booking_id: booking_id } });
-  return res.status(200).json({ message: ticket });
+  return res.status(201).json({ message: ticket });
 };
+
 module.exports = {
   bookTicket,
   getTicketDetail,
