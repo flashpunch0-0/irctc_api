@@ -21,6 +21,9 @@ const Booking = sequelize.define(
     booking_time: {
       type: DataTypes.DATE,
     },
+    no_of_tickets: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     timestamps: false,

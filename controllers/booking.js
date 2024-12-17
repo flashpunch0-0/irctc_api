@@ -38,7 +38,7 @@ const Train = require("../models/train");
 //   }
 // };
 const bookTicket = async (req, res) => {
-  const { train_num } = req.body;
+  const { train_num, no_of_tickets } = req.body;
   const token = req.header("Authorization")?.split(" ")[1];
 
   if (!token)
@@ -69,13 +69,13 @@ const bookTicket = async (req, res) => {
       }
 
       // seat check
-      if (train.avl_seats <= 0) {
+      if (train.avl_seats <= 0 || train.avl_seats <= no_of_tickets) {
         await t.rollback();
         return res.status(400).json({ message: "No seats available" });
       }
 
       // Decrement seat count
-      train.avl_seats -= 1;
+      train.avl_seats -= no_of_tickets;
       await train.save({ transaction: t });
 
       // Create booking
@@ -84,6 +84,7 @@ const bookTicket = async (req, res) => {
           train_num,
           booking_time: new Date(),
           username: decrypted.username,
+          no_of_tickets: no_of_tickets,
         },
         { transaction: t }
       );
